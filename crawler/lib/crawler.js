@@ -9,17 +9,35 @@ var favicon_base_dir = __dirname + '/../favicons/';
 var fs = require('fs');
 
 /**
- * get icons from domain url
+ * fetches icons from a domain url a writes it to file
+ * 
+ * @param {String} url
+ * @param {Object} response
+ *  
  */
 var _get_favicon = function(url,res) {
     _get_favicons_from_url(url,res, 'link[rel~="icon"],link[rel^="apple-touch-icon"]');
 
 };
 
+/**
+ * fetches icons from a domain url a writes it to file
+ * 
+ * @param {String} url
+ * @param {Object} response
+ *  
+ */
 exports._get_favicon = _get_favicon;
 
 
-
+/**
+ * fetches icons from a domain url a writes it to file
+ * 
+ * @param {String} url
+ * @param {Object} response
+ * @param {String} selector
+ *  
+ */
 var _get_favicons_from_url = function(url,res, sel) {
     _invoke_request(url)
     .then(function(val) {
@@ -62,6 +80,9 @@ var _get_favicons_from_url = function(url,res, sel) {
 
 /**
  * select best icon. Best icon is selected based on size i.e the larger the bytes the better the quality.
+ * 
+ * @param {Promises[]} imgs
+ * 
  * TODO better implementation to determine quality of icon
  */
 var _choose_best_favicon = function(imgs) {
@@ -97,7 +118,10 @@ var _get_icons_as_data = function(imgs) {
 };
 
 /**
- * fire requests to provided domain
+ * fires a request to provided domain
+ * 
+ * @param {String} url
+ * @return {Promise}
  */
 var _invoke_request = function(url) {
     var deferred = Q.defer();
