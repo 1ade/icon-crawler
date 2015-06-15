@@ -81,7 +81,7 @@ var _get_favicons_from_url = function(url,res, sel) {
 /**
  * select best icon. Best icon is selected based on size i.e the larger the bytes the better the quality.
  * 
- * @param {Promise[]} imgs
+ * @param {Promises[]} imgs
  * 
  * TODO better implementation to determine quality of icon
  */
@@ -108,11 +108,6 @@ var _choose_best_favicon = function(imgs) {
     return deferred.promise;
 };
 
-/**
- * gets the icons as data
- * @param {Array} imgs
- * @returns {Promise[]}
- */
 var _get_icons_as_data = function(imgs) {
     var promises =[];
     $(imgs).each(function(i, url) {
