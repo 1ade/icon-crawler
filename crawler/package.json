@@ -1,13 +1,16 @@
 {
-    "name": "application-name"
+    "name": "icon-crawler"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
       	"express": "2.5.8"
     	, "jade": ">= 0.0.1"
-		, "request":  "*"
-		, "cheerio": "*"
-		, "q":"*"
-		,"validator":"*"	  
+		, "request":  "2.57.0"
+		, "cheerio": "0.19.0"
+		, "q":"1.4.1"
+		,"validator":"3.40.1"
+		,"mocha":"2.2.5"
+		,"sinon":"1.15.3"
+		,"should":"6.0.3"	  
 	}
 }
