@@ -125,7 +125,7 @@ var _get_icons_as_data = function(imgs) {
  */
 var _invoke_request = function(url) {
     var deferred = Q.defer();
-    request(url, function(err, resp, body) {
+    request.get(url, function(err, resp, body) {
         if (!err && resp.statusCode === 200) {
             var retVal = {"response": resp, "body": body,"url":url};
             deferred.resolve(retVal);

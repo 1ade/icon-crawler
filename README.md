@@ -14,6 +14,11 @@ Node.js
 	- path
 	- express
 	- validator
+	- mocha
+	- sinon
+	- should
+	- hippie
+	- chai
 curl or any web-browser
 
 ### To Run

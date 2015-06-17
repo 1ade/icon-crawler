@@ -2,6 +2,9 @@
     "name": "icon-crawler"
   , "version": "0.0.1"
   , "private": true
+  ,	"scripts": {
+				"test": "mocha test"
+			}
   , "dependencies": {
       	"express": "2.5.8"
     	, "jade": ">= 0.0.1"
@@ -11,6 +14,8 @@
 		,"validator":"3.40.1"
 		,"mocha":"2.2.5"
 		,"sinon":"1.15.3"
-		,"should":"6.0.3"	  
+		,"should":"6.0.3"
+		,"hippie":"0.3.0"
+		,"chai":"3.0.0"	  
 	}
 }
