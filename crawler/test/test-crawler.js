@@ -8,7 +8,7 @@ var should = require('should');
 
 describe('Crawler Unit test', function(){
 	var callback;
-  var test_file = favicon_base_dir + "test.txt";
+	var test_file = favicon_base_dir + "test.txt";
 	
 	before(function(done){
 		var htmlHeader = "<html>" +

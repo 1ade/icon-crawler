@@ -9,33 +9,33 @@ hippie.assert.showDiff = true;
 
 describe('Crawler Integration Test', function(){
 
-var domain = 'http://www.google.com';
-var filename = path.normalize(favicon_base_dir + new Buffer(domain).toString('base64'));
+	var domain = 'http://www.google.com';
+	var filename = path.normalize(favicon_base_dir + new Buffer(domain).toString('base64'));
 
-function api(){
+	function api(){
 		return hippie(server).
-					 base("http://localhost:3000/");					
-}
+		base("http://localhost:3000/");					
+	}
 
-function check_for_favicon(done){
+	function check_for_favicon(done){
 		fs.exists(filename,function(exists){
 			expect(exists).to.be.true;
 			done();
 		})	
-}
+	}
 
 
-it('icon crawler works fine',function(done){
+	it('icon crawler works fine',function(done){
 
-	api()
+		api()
 		.get("get/")
 		.qs({'domain':domain})
 		.expectStatus(200)
 		.end(function(err,res,body){
-					if(err) throw err;
-					check_for_favicon(done);					
-			});
-		
-});
+			if(err) throw err;
+			check_for_favicon(done);					
+		});
+
+	});
 
 })
