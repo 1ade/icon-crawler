@@ -32,16 +32,16 @@ curl or any web-browser
 8. An icon should be returned as the response.
 
 ### Thoughts
- - Set up of a cache (filesystem ? database ?), to not have to fetch the images on the website each time
+ - Cache
 
 The filesystem is used as a cache. Retrieve icons are stored on the system the first time around and fetched directly From the file system on subsequent calls increasing the response time.
 
-- If this cache was to be implemented, what strategies to update it should the icons of the website change?
+- Cache Update
 
 A schedule job has been implemented using the native timer setInterval(func , delay) function the delay has been set to daily.
 This job is responsible for updating the icons
 
-- If 2 requests for the same domain are received in a short time interval, is there a way to deal with them in a smart way?
+- Concurrent Requests
 
 - If the icon has already been cached there should be no issue here the cached version would simply be returned, if it hasn't The following steps can be followed;
 	- First thread (i.e. initial request) stores the domain currently being processed the first. 
@@ -49,7 +49,7 @@ This job is responsible for updating the icons
 	- If yes, listen to a designated folder till its file exists.
 	- Then return cached copy.
 
-- How to choose the best image? Is it better to try to parallelize the different strategies or do them sequentially?
+- Image selection (parallel or sequential)
 
 The best image was chosen by selecting the icon with the largest bytes from a collection of icons defined in the 'link' tag
 of the domain name's 'head' element with 'rel' attribute that had value 'icon' or started with 'apple-touch-icon'. The url domain_name/favicon.ico was also included in the collection.It is better to parallelize the strategies for performance reasons.
@@ -58,7 +58,7 @@ of the domain name's 'head' element with 'rel' attribute that had value 'icon' o
 
 Rate limiting per domain is preferred as different ips can be related to a single domain.
 
-- Possible architecture, if we were to scale to millions of users / requests per day...
+- Possible architecture to increase scalability
 
 Possible scalling solutions
 Proxy Based scalling
